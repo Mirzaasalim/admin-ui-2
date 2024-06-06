@@ -38,7 +38,7 @@ function App() {
               <Route path=":userId" element={<RequireAuth><Single /></RequireAuth>}></Route>
               <Route
                 path="new"
-                element={<RequireAuth><New inputs={userInputs} title="Add New User." /></RequireAuth>}
+                element={<RequireAuth><New inputs={userInputs} title="Add New User.." /></RequireAuth>}
               />
             </Route>
             <Route path="products">
