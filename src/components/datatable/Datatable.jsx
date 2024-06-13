@@ -1,6 +1,6 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -23,16 +23,20 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  { id: 1, lastName: "Salim", firstName: "Mirza", age: 21 },
+  { id: 2, lastName: "Safitro", firstName: "Ilham", age: 19 },
+  { id: 3, lastName: "Arya", firstName: "Kevin", age: 20 },
+  { id: 4, lastName: "Priyo", firstName: "Alvin", age: 16 },
+  { id: 5, lastName: "Alfatir", firstName: "Dimas", age: null },
+  { id: 6, lastName: "Meli", firstName: null, age: 53 },
+  { id: 7, lastName: "Ferdiansyah", firstName: "Farid", age: 44 },
+  { id: 8, lastName: "Valen", firstName: "Rossi", age: 36 },
+  { id: 9, lastName: "Rivandi", firstName: "Septyan", age: 65 },
 ];
+
+const Datatable = () => {
+  const location = useLocation();
+  const type = location.pathname.split('/')[1];
 
 const actionColumn = [
   {
@@ -42,7 +46,7 @@ const actionColumn = [
     renderCell: () => {
       return (
         <div className="cellAction">
-          <Link to="/users/test" style={{ textDecoration: "none" }}>
+          <Link to={"/" + type + "/test"} style={{ textDecoration: "none" }}>
             <span className="viewButton">View</span>
           </Link>
         </div>
@@ -51,12 +55,11 @@ const actionColumn = [
   },
 ];
 
-const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Users
-        <Link to="/users/new" className="link">
+        {type.toUpperCase()}
+        <Link to={"/" + type + "/new"} className="link">
           Add New
         </Link>
       </div>
